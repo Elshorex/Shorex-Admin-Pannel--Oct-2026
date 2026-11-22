@@ -1,0 +1,60 @@
+.rmdp-range {
+  background-color: #049a77;
+}
+
+.custom-input {
+  z-index: 1000000000 !important;
+}
+
+.rmdp-day.rmdp-today span {
+  background-color: #e6f3ec;
+  color: black;
+}
+
+.rmdp-day.rmdp-today span {
+  background-color: #e6f3ec;
+  color: black;
+}
+
+.rmdp-day:not(.rmdp-disabled, .rmdp-day-hidden) span:hover {
+  background-color: #049a70;
+  color: #fff;
+}
+
+.rmdp-week-day {
+  color: #049a70;
+}
+
+.rmdp-arrow {
+  border-color: #049a70;
+}
+
+.rmdp-arrow-container:hover {
+  background-color: #049a70;
+}
+
+.rmdp-range-hover {
+  background-color: #e6f3ec;
+  color: black;
+}
+
+/* Enforce the highest z-index for the date picker and its dialog */
+.rmdp-wrapper {
+  z-index: 2147483647 !important;
+  position: relative; /* Ensure z-index applies */
+}
+
+.rmdp-calendar {
+  z-index: 2147483647 !important;
+  position: relative; /* Ensure z-index applies */
+}
+
+.rmdp-shadow {
+  z-index: 2147483647 !important;
+  position: relative; /* Ensure z-index applies */
+}
+
+.DatePicker p {
+  z-index: 2147483647 !important; /* Use a higher z-index value */
+  position: relative; /* Ensure the z-index takes effect */
+}

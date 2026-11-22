@@ -1,0 +1,46 @@
+/* ENGLISH FONTS */
+@font-face {
+  font-family: "IBMPlexSans-semiBold";
+  src: local("IBMPlexSans"),
+    url("/src/assets/fonts/IBMPlexSans-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: "IBMPlexSans-medium";
+  src: local("IBMPlexSans"),
+    url("/src/assets/fonts/IBMPlexSans-Medium.ttf") format("truetype");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "IBMPlexSans-regular";
+  src: local("IBMPlexSans"),
+    url("/src/assets/fonts/IBMPlexSans-Regular.ttf") format("truetype");
+  font-weight: 400;
+}
+
+/* ARABIC FONTS */
+
+@font-face {
+    font-family: "IBMPlexSansArabic-semiBold";
+    src: local("IBMPlexSansArabic"),
+      url("/src/assets/fonts/IBMPlexSansArabic-SemiBold.ttf") format("truetype");
+    font-weight: 600;
+  }
+
+@font-face {
+  font-family: "IBMPlexSansArabic-medium";
+  src: local("IBMPlexSansArabic"),
+    url("/src/assets/fonts/IBMPlexSansArabic-Medium.ttf") format("truetype");
+  font-weight: 500;
+}
+
+@font-face {
+    font-family: "IBMPlexSansArabic-regular";
+    src: local("IBMPlexSansArabic"),
+      url("/src/assets/fonts/IBMPlexSansArabic-Regular.ttf") format("truetype");
+    font-weight: 400;
+  }
+  
+  

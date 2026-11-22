@@ -1,0 +1,53 @@
+import express from 'express';
+import { requireAuth } from '../../services/passport.js';
+import messageController from '../../controllers/message.controller/message.controller.js'
+import { multerSaveTo } from '../../services/multer-service.js'
+
+
+const router = express.Router();
+
+
+router.route('/support').post(requireAuth,
+    multerSaveTo('chat').single('file'),
+    messageController.validateCreateSupport(),
+    messageController.createSupport
+)
+.get(requireAuth,messageController.getSupportChat)
+
+router.route('/').post(requireAuth,
+    multerSaveTo('chat').single('file'),
+    messageController.validateCreateDefault(),
+    messageController.create
+)
+router.route('/compalint').post(requireAuth,
+    multerSaveTo('chat').single('file'),
+    messageController.validateComplaint(),
+    messageController.create
+)
+
+router.route('/compalint/visitor').post(
+    multerSaveTo('chat').single('file'),
+    messageController.validateVisitorComplaint(),
+    messageController.createVisitorMessage
+).get(messageController.getVisitorChatHistory)
+
+
+router.route('/order').post(requireAuth,
+    multerSaveTo('chat').single('file'),
+    messageController.validateOrder(),
+    messageController.create
+)
+router.route('/specificChat').get(requireAuth,messageController.getChatHistory)
+router.route('/lastContacts').get(requireAuth,messageController.getLastContacts)
+
+router.route('/complaintslastChats').get(requireAuth, messageController.getLastComplaintsChatsForAdmin)
+router.route('/orderslastChats').get(requireAuth, messageController.getLastOrdersChatsForAdmin)
+router.route('/lastChats').get(requireAuth, messageController.getLastChatsForAdmin)
+router.route('/lastSupportChats').get(requireAuth, messageController.getLastSupportChatsForAdmin)
+router.route('/adminGetSpecificChat').get(requireAuth, messageController.getSpecificChat)
+
+
+router.route('/:id')
+    .get(requireAuth, messageController.getById)
+    .delete(requireAuth, messageController.deleteForEveryOne)
+export default router;

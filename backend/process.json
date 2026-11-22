@@ -1,0 +1,38 @@
+{
+    "apps": [
+        {
+            "name": "shx",
+            "script": "npm -- start",
+            "node_args": [
+                "--harmony"
+            ],
+            "cwd": "./",
+            "env": {
+                "NODE_ENV": "test",
+                "PORT": 8000
+            }
+        },
+        {
+            "name": "shx-2",
+            "script": "npm -- start",
+            "node_args": [
+                "--harmony"
+            ],
+            "cwd": "./",
+            "env": {
+                "NODE_ENV": "production",
+                "PORT": 9000
+            }
+        },
+        {
+            "name": "panel-shx-2",
+            "script": "serve -s build -l 7000",
+            "node_args": "--harmony",
+            "cwd": "./front-end/admin",
+            "env": {
+                "NODE_ENV": "production",
+                "PORT": 7000
+            }
+        }
+    ]
+}

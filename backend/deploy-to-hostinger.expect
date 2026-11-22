@@ -1,0 +1,34 @@
+#!/usr/bin/expect -f
+# Password-based deploy. Prefer SSH keys + deploy-to-hostinger.sh when possible.
+set timeout 600
+set user "shorexapp-backend"
+set host "72.61.81.212"
+set password $env(DEPLOY_SSH_PASSWORD)
+set local_dir [file dirname [info script]]
+set remote_dir "~/htdocs/backend.shorexapp.cloud/"
+
+if {$password eq ""} {
+  puts "Set DEPLOY_SSH_PASSWORD and run again."
+  exit 1
+}
+
+spawn rsync -avz --delete \
+  --filter "protect .env" \
+  --filter "protect .env.postmark" \
+  --exclude node_modules --exclude .env --exclude .env.postmark --exclude dist --exclude .git \
+  --exclude .DS_Store \
+  $local_dir/ $user@$host:$remote_dir
+
+expect {
+  -re "(?i)password:" { send "$password\r"; exp_continue }
+  eof
+}
+
+spawn ssh $user@$host "cd ~/htdocs/backend.shorexapp.cloud && (command -v yarn >/dev/null && yarn install --frozen-lockfile || npm install --legacy-peer-deps) && bash scripts/ensure-postmark-on-server.sh && (pm2 restart shorex-backend --update-env 2>/dev/null || pm2 start ecosystem.config.cjs --update-env) && pm2 save && pm2 list && curl -s http://127.0.0.1:3000/welcome"
+
+expect {
+  -re "(?i)password:" { send "$password\r"; exp_continue }
+  eof
+}
+
+puts "\n==> Deploy finished."

@@ -1,0 +1,19 @@
+html {
+  --font-family: "IBMPlexSans";
+}
+
+html[dir="rtl"] {
+  --font-family: "IBMPlexSansArabic";
+}
+
+html {
+  --font-600: "IBMPlexSans-semiBold";
+  --font-500: "IBMPlexSans-medium";
+  --font-400: "IBMPlexSans-regular";
+}
+
+html[dir="rtl"] {
+  --font-600: "IBMPlexSansArabic-semiBold";
+  --font-500: "IBMPlexSansArabic-medium";
+  --font-400: "IBMPlexSansArabic-regular";
+}
